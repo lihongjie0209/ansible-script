@@ -22,7 +22,7 @@
     get_url:
       url: https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.8.2/rabbitmq-server-3.8.2-1.el7.noarch.rpm
       dest: /opt/rabbitmq/rabbitmq-server-3.8.2-1.el7.noarch.rpm
-  - name: "安装 server"
+  - name: "install server"
     yum:
       name: /opt/rabbitmq/rabbitmq-server-3.8.2-1.el7.noarch.rpm
       state: present
