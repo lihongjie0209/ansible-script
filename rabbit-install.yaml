@@ -1,9 +1,8 @@
 ---
-- hosts: webservers
+- hosts: localhost
+  connection: local
   gather_facts: False
-  vars:
-    http_port: 80
-    max_clients: 200
+
   remote_user: root
   tasks:
   - name: 创建rabbitmq目录
