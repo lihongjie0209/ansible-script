@@ -1,0 +1,36 @@
+---
+- hosts: webservers
+  gather_facts: False
+  vars:
+    http_port: 80
+    max_clients: 200
+  remote_user: root
+  tasks:
+  - name: 创建rabbitmq目录
+    file:
+      path: /opt/rabbitmq
+      state: directory
+      mode: '0755'
+  - name: 下载 erlang rpm
+    get_url:
+      url: https://github.com/rabbitmq/erlang-rpm/releases/download/v22.2.4/erlang-22.2.4-1.el7.x86_64.rpm
+      dest: /opt/rabbitmq/erlang-22.2.4-1.el7.x86_64.rpm
+  - name: 安装 erlang
+    yum:
+      name: /opt/rabbitmq/erlang-22.2.4-1.el7.x86_64.rpm
+      state: present
+  - name: 下载 server rpm
+    get_url:
+      url: https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.8.2/rabbitmq-server-3.8.2-1.el7.noarch.rpm
+      dest: /opt/rabbitmq/rabbitmq-server-3.8.2-1.el7.noarch.rpm
+  - name: 安装 server
+    yum:
+      name: /opt/rabbitmq/rabbitmq-server-3.8.2-1.el7.noarch.rpm
+      state: present
+  - name: 配置server开机自启动， 并且启动server
+    systemd:
+      name: rabbitmq-server.service
+      state: started
+      enabled: yes
+  - name: 启动webui
+    shell: rabbitmq-plugins enable rabbitmq_management
