@@ -26,10 +26,10 @@
     yum:
       name: /opt/rabbitmq/rabbitmq-server-3.8.2-1.el7.noarch.rpm
       state: present
-  - name: "配置server开机自启动， 并且启动server"
+  - name: "start server "
     systemd:
       name: rabbitmq-server.service
       state: started
       enabled: yes
-  - name: "启动webui"
+  - name: "start webui"
     shell: rabbitmq-plugins enable rabbitmq_management
