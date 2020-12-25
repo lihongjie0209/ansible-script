@@ -1,0 +1,6 @@
+- name: 创建yum备份文件夹 bak
+  command: mkdir -p /etc/yum.repo.d/bak/
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+- name: 备份yum仓库源
+  command: mv /etc/yum.repo.d/*.repo /etc/yum.repo.d/bak/  
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
