@@ -1,0 +1,3 @@
+- name: 禁用selinux
+  ansible.posix.selinux:
+  state: disabled
