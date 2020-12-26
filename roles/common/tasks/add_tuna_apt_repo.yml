@@ -1,0 +1,23 @@
+- name: 添加 tuna debain 基本仓库
+  apt_repository:
+    repo: deb https://mirrors.tuna.tsinghua.edu.cn/debian/ {{ ansible_lsb.codename }} main contrib non-free
+    filename: tuna
+  when: ansible_os_family == "Debian"
+- name: 添加 tuna debain 更新仓库
+  apt_repository:
+    repo: deb https://mirrors.tuna.tsinghua.edu.cn/debian/ {{ ansible_lsb.codename }}-updates main contrib non-free
+    filename: tuna
+  when: ansible_os_family == "Debian"
+- name: 添加 tuna debain backports 仓库
+  apt_repository:
+    repo: deb https://mirrors.tuna.tsinghua.edu.cn/debian/ {{ ansible_lsb.codename }}-backports main contrib non-free
+    filename: tuna
+  when: ansible_os_family == "Debian"
+
+
+- name: 添加 tuna debain 安全更新仓库
+  apt_repository:
+    repo: deb https://mirrors.tuna.tsinghua.edu.cn/debian-security/ {{ ansible_lsb.codename }}/updates main contrib non-free
+    filename: tuna
+  when: ansible_os_family == "Debian"
+- import_tasks: backup_apt_repo.yml

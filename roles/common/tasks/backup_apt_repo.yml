@@ -1,3 +1,4 @@
 - name: 备份apt仓库源
   command: mv /etc/apt/sources.list /etc/apt/sources.list.bak
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  ignore_errors: True

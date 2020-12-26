@@ -1,0 +1,33 @@
+- name: 安装基本软件 (CentOS)
+  yum:
+    name:
+      - vim
+      - wget
+      - curl
+      - htop
+      - lrzsz
+      - tmux
+      - zip
+      - upzip
+      - tree
+      - telnet
+      - sysstat
+    state: present
+  when: ansible_os_family == "CentOS"
+- name : 安装基本软件 (Debian)
+  apt:
+    name:
+      - vim
+      - wget
+      - curl
+      - htop
+      - lrzsz
+      - tmux
+      - zip
+      - tree
+      - telnet
+      - sysstat
+    state: present
+    update_cache: True
+    force_apt_get: True
+  when: ansible_os_family == "Debian" or ansible_os_family == "Ubuntu"

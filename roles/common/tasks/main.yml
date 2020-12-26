@@ -1,6 +1,6 @@
-- import_tasks: backup_apt_repo.yml
-- import_tasks: backup_yum_repo.yml
 - import_tasks: disable_selinux.yml
-- import_tasks: add_tuan_yum_repo.yml
-- import_tasks: add_tuan_apt_repo.yml
+- import_tasks: add_tuna_yum_repo.yml
+- import_tasks: add_tuna_apt_repo.yml
 - import_tasks: enable_chrony.yml
+- import_tasks: enable_ssh.yml
+- import_tasks: install_base_software.yml

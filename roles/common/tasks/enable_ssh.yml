@@ -1,0 +1,11 @@
+- name: 开启SSHD服务(Debian)
+  apt:
+    name: openssh-server
+    state: present
+  when: ansible_os_family == "Debian"  or ansible_os_family == "Ubuntu" 
+- name: 配置SSHD开机启动(Debian)
+  systemd:
+    name: ssh
+    state: started
+    enabled: True
+  when: ansible_os_family == "Debian"  or ansible_os_family == "Ubuntu" 

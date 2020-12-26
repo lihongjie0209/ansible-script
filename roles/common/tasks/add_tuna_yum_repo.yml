@@ -4,25 +4,25 @@
     file: tuna-base.repo
     baseurl: https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/os/$basearch/
     gpgcheck: no
-    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 - name: 添加 tuna CentOS updates 仓库
   yum_repository:
     name: tuna-updates
     file: tuna-updates.repo
     baseurl: https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/updates/$basearch/
     gpgcheck: no
-    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 - name: 添加 tuna CentOS extras 仓库
   yum_repository:
     name: tuna-extras
     file: tuna-extras.repo
     baseurl: https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/extras/$basearch/
     gpgcheck: no
-    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 - name: 添加 tuna CentOS epel 仓库
   yum_repository:
     name: tuna-epel
     file: tuna-epel.repo
     baseurl: https://mirrors.tuna.tsinghua.edu.cn/epel/$releasever/$basearch/
     gpgcheck: no
-    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'

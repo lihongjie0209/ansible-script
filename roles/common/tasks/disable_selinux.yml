@@ -1,3 +1,10 @@
+- name: 安装selinux依赖
+  yum:
+    name: libselinux-python
+    state: present
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
 - name: 禁用selinux
-  ansible.posix.selinux:
-  state: disabled
+  selinux:
+    state: disabled
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'

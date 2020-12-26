@@ -1,0 +1,2 @@
+[local]
+localhost ansible_host=localhost ansible_connection=local ansible_become=true ansible_become_password=abc@123
