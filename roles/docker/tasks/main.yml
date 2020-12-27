@@ -1,0 +1,28 @@
+---
+# tasks file for docker
+- name: 添加 docker 仓库 (CentOS)
+  yum_repository:
+    name: docker-tuna
+    baseurl: https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/centos/$releasever/$basearch/stable  
+    gpgcheck: no
+    enabled: yes
+  when: ansible_os_family == "CentOS"
+- name: 添加 docker 仓库 (Debian)
+  apt_repository:
+    filename: docker-tuna
+    repo: deb [arch=amd64] https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/debian {{ansible_lsb.codename}} stable   
+    state: present
+  when: ansible_os_family == "Debian"
+- name: 安装 docker (CentOS)
+  yum:
+    name:
+      - docker-ce
+    state: present
+  when: ansible_os_family == "CentOS"
+- name: 安装 docker (Debian)
+  apt:
+    name:
+      - docker-ce
+    state: present
+  when: ansible_os_family == "Debian"
+
